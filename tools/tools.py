@@ -1,5 +1,6 @@
 import html
 from diffusers import StableDiffusionPipeline
+import torch
 
 def splitIntoArray(frame_sentences):
     return frame_sentences.split("+")
@@ -24,14 +25,20 @@ def generateFrames(emotion):
 	#Use a negative prompt to mtry to make picture better
 	neg_prompt = "low res, ugly, bad hands, too many digits, bad teeth, blurry, blurred background"
 	
-	#V1 - Use cpu
-	base.to("cuda")
+	#V1 - Use cpu or cuda if the computer has a gpu to generate the image
+	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+	device = "cpu"
+	base.to(device)
 
-	#Create the image
-	image = base(prompt=full_prompt, negative_prompt=neg_prompt).images[0]
-	
-	#Save each image into images folder with name prompt#.png
-	image.save(f"static/images/{avatarName}")
+	with torch.no_grad():
+		torch.cuda.empty_cache()
+		#Create the image
+		base.enable_model_cpu_offload()
+		images = base(prompt=full_prompt, negative_prompt=neg_prompt, height=256, width=256).images
+		image = images[0]
+		print(len(images))
+		#Save each image into images folder with name prompt#.png
+		image.save(f"static/images/{avatarName}")
     
 	#Return an array with the name of each file
 	return avatarName

@@ -3,7 +3,7 @@ import nltk
 
 text = "I love coding and it makes me feel so happy!"
 
-class Emotion:
+class TextToEmotion:
 
   def __init__(self, text):
     self.text = text
