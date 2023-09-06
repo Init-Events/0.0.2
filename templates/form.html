@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" href="../static/style.css">
+	<title>Stable Storyboard</title>
+</head>
+
+<body>
+	<main>
+		<div class="titleDiv">
+			<h1>Emotional Avatar Generator</h1>
+			<p>Use Stable Diffusion to generate an avatar based on emotion</p>	
+		</div>
+
+		<div class="formDiv">
+			<h3>Starting Form</h3>
+			<form action="/submit-starter-form" method="POST">
+				<label for="user-sentence">User Sentence</label>
+				<textarea id="user-sentence" name="user-sentence" required>Insert sentence to be analyzed</textarea>
+				<input type="submit" value="Submit">
+			</form>
+			
+		</div>
+		
+	</main>
+</body>
