@@ -8,17 +8,26 @@
 
 <body>
 	<main>
-		<div class="titleDiv">
-			<h1>Emotional Avatar Generator</h1>
-			<p>Use Stable Diffusion to generate an avatar based on emotion</p>	
+		<div class="titleDiv" style="text-align: center; margin-bottom: 50px;">
+			<h1>Emojitars</h1>
 		</div>
 
 		<div class="formDiv">
-			<h3>Starting Form</h3>
+			<!-- <h3>Starting Form</h3> -->
 			<form action="/submit-starter-form" method="POST">
-				<label for="user-sentence">User Sentence</label>
-				<textarea id="user-sentence" name="user-sentence" required>Insert sentence to be analyzed</textarea>
-				<input type="submit" value="Submit">
+				<div style="display: flex; align-items: center; flex-direction: column;">
+					<div style="margin-bottom: 50px; margin-top: 50px;">
+						<input type="text"placeholder="Excited puppy racing to car" id="user-sentence" name="user-sentence" style="width: 900px; height: 40px; border-radius: 15px; " onblur="this.style.border = '2px solid #1A8FDD';"required></input>
+					</div>
+	
+					<div>
+						<input type="submit" value="Generate" style="background-color: #1A8FDD; ">
+					</div>
+				</div>
+				<!-- <label for="user-sentence">User Sentence</label> -->
+
+				
+				
 			</form>
 			
 		</div>
