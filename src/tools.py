@@ -9,14 +9,15 @@ def getEmotions(user_sentence):
 	emotion = "happy"
 	return emotion
 
-def generateFrames(emotion):
+def generateFrames(emotion, user_sentence):
 	promptNum = 0
 
 	#Insert stable diffusion here
 	base = StableDiffusionPipeline.from_single_file('./data/mdjrny-v4.safetensors', use_safetensors=True) 
 	#Build the prompt
 	base_prompt = "masterpiece, best quality, 8k, detailed, dramatic, "
-	full_prompt = base_prompt + emotion +" style"
+	user_prompt = base_prompt + user_sentence + " "
+	full_prompt = user_prompt + emotion +" style"
 
 	#Loop through the frames and generate images
 	avatarName = "prompt_" + full_prompt + ".png"
