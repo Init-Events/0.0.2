@@ -21,6 +21,6 @@ def gfg():
         emotion = emotionObj.getTopEmotion()
         #Use this function to actually generate pics and return array of files
         avatarImageName = generateFrames(emotion)
-    return render_template("received.html", links=avatarImageName)
+    return render_template("received.html", url=avatarImageName)
 
 app.run()
